@@ -12,13 +12,12 @@ imgwidth = 2426
 imgheight = 2368
 
 # Initialize color and thickness variables
-
-colour = input('What colour would you like?')
-
-
+def colour():
+    colour = input('What colour would you like?')
+    pass
 # Create empty lists to hold dots 
-dots = []
 
+dots = []
 
 # Handler for clear button
 def clear_click():
@@ -43,13 +42,17 @@ def draw(canvas):
         
 # Create a frame 
 
-frame = simplegui.create_frame('Testing', 400, 400)
-
+frame = simplegui.create_frame('David es muy comico', 400, 400)
+label = frame.add_label('Please turn the frown upside down so that it matches the statement.')
+label1 = frame.add_label('----------------------------')
+button1 = frame.add_button('SCRUB DADDY', clear_click)
 
 # Add buttons and inputs to frame
 
 # Assign callbacks to event handlers
+
 frame.set_draw_handler(draw)
+
 # Start the frame animation
 
 frame.start()
