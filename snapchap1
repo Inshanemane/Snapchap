@@ -8,37 +8,48 @@ image = simplegui.load_image('http://i.imgur.com/tb0xxJa.jpg?1')
 
 # Define constants for image width and height
 
-imgwidth = 2426
-imgheight = 2368
+WIDTH = 2426
+HEIGHT = 2368
 
-ballpos = [imgwidth / 2, imgheight / 2]
+ballpos = [WIDTH / 2, HEIGHT / 2]
 
 # Create empty lists to hold dots 
+dots = []
+
+colour = "blue"
+radius1 = 3
 
 # Handler for clear button
 def clear_click():
-    pass
- 
+    global dots
+    
+    dots = []
     
 # Handler for thickness input
-radius1 = int(input("Radius of dot?"))
- 
-    
+
+def thickness_handle(text_input):
+    pass
+
 # Handler for colour input
-colour = input('What colour would you like?')
+def colour_handle(text_input):
+    pass
    
     
 # Handler for mouse click
 def click(position):
-    global ballpos
-    ballpos = list(position)     
+    global dots
+    dots.append(position)
+    print dots
         
         
 # Handler to draw on canvas
 def draw(canvas):
-    global image, radius1, ballpos
-    canvas.draw_image(image, (imgwidth / 2, imgheight / 2), (imgwidth, imgheight), (200,200), (400,400))
-    canvas.draw_circle(ballpos, radius1, 1, colour, colour)   
+    global image, radius1, dots, colour
+    canvas.draw_image(image, (WIDTH / 2, HEIGHT / 2), (WIDTH, HEIGHT), (200,200), (400,400))
+    
+    for x in range(len(dots)):
+        canvas.draw_circle(dots[x], radius1, radius1, colour, colour)
+  
         
     
 # Create a frame 
@@ -46,10 +57,12 @@ frame = simplegui.create_frame('David es muy comico', 400, 400)
 
 
 # Add buttons and inputs to frame
-button1 = frame.add_button('SCRUB DADDY', clear_click)
+
 label = frame.add_label('Please turn the frown upside down so that it matches the statement.')
 label1 = frame.add_label('----------------------------')
-
+button1 = frame.add_button('SCRUB DADDY', clear_click)
+inp1 = frame.add_input('Enter your thickness', thickness_handle, 100)
+inp2 = frame.add_input('Enter your colour', colour_handle, 100)
 
 # Assign callbacks to event handlers
 
