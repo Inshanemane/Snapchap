@@ -1,4 +1,4 @@
-# Doodler Game
+# Snapchap
 
 import simplegui
 
@@ -11,13 +11,16 @@ image = simplegui.load_image('http://i.imgur.com/tb0xxJa.jpg?1')
 imgwidth = 2426
 imgheight = 2368
 
-# Initialize color and thickness variables
-def colour():
-    colour = input('What colour would you like?')
-    pass
+
+# Initialize colour and thickness variables
+
+    
+
 # Create empty lists to hold dots 
 
 dots = []
+radius1 = int(input("Radius of dot?"))
+colour = input('What colour would you like?')
 
 # Handler for clear button
 def clear_click():
@@ -27,31 +30,40 @@ def clear_click():
 def thickness_handler(text_input):
     pass
     
-# Handler for color input
-def color_handler(text_input):
+    
+# Handler for colour input
+def colour_handler(text_input):
     pass
     
 # Handler for mouse click
-def mouse_handler(position):
-    pass
+def click(position):
+    global canvas, ballpos
+    
+    
         
 # Handler to draw on canvas
 def draw(canvas):
-    global image
+    global image, radius1, dots
     canvas.draw_image(image, (imgwidth / 2, imgheight / 2), (imgwidth, imgheight), (200,200), (400,400))
-        
+    ballpos = [imgwidth / 2, imgheight / 2]
+    canvas.draw_circle(ballpos, radius1, 1, colour, colour)   
+
 # Create a frame 
 
 frame = simplegui.create_frame('David es muy comico', 400, 400)
 label = frame.add_label('Please turn the frown upside down so that it matches the statement.')
 label1 = frame.add_label('----------------------------')
-button1 = frame.add_button('SCRUB DADDY', clear_click)
+
 
 # Add buttons and inputs to frame
+button1 = frame.add_button('SCRUB DADDY', clear_click)
+
 
 # Assign callbacks to event handlers
 
 frame.set_draw_handler(draw)
+
+frame.set_mousedrag_handler(click)
 
 # Start the frame animation
 
