@@ -1,0 +1,55 @@
+# Doodler Game
+
+import simplegui
+
+# Load image
+
+image = simplegui.load_image('http://i.imgur.com/tb0xxJa.jpg?1')
+
+# Define constants for image width and height
+
+imgwidth = 2426
+imgheight = 2368
+
+# Initialize color and thickness variables
+
+colour = input('What colour would you like?')
+
+
+# Create empty lists to hold dots 
+dots = []
+
+
+# Handler for clear button
+def clear_click():
+    pass
+    
+# Handler for thickness input
+def thickness_handler(text_input):
+    pass
+    
+# Handler for color input
+def color_handler(text_input):
+    pass
+    
+# Handler for mouse click
+def mouse_handler(position):
+    pass
+        
+# Handler to draw on canvas
+def draw(canvas):
+    global image
+    canvas.draw_image(image, (imgwidth / 2, imgheight / 2), (imgwidth, imgheight), (200,200), (400,400))
+        
+# Create a frame 
+
+frame = simplegui.create_frame('Testing', 400, 400)
+
+
+# Add buttons and inputs to frame
+
+# Assign callbacks to event handlers
+frame.set_draw_handler(draw)
+# Start the frame animation
+
+frame.start()
