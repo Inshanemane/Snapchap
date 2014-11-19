@@ -13,10 +13,13 @@ HEIGHT = 2368
 
 ballpos = [WIDTH / 2, HEIGHT / 2]
 
+triste = False
 
 
 # Create empty lists to hold dots 
 dots = []
+
+
 
 # Handler for clear button
 def clear_click():
@@ -24,13 +27,17 @@ def clear_click():
     
     dots = []
     
+    
+    
 # Handler for thickness input
 
-def thickness_handle(thethick):
+def thickness_handle(text_input):
     global radius1
-    radius1 = int(thethick)
+    radius1 = int(text_input)
     print radius1
     return radius1
+
+
 
 # Handler for colour input
 def colour_handle(text_input):
@@ -38,12 +45,15 @@ def colour_handle(text_input):
     colour = text_input
     return colour
     
+    
+    
 # Handler for mouse click
 def click(position):
     global dots
     dots.append(position)
     print dots
         
+     
         
 # Handler to draw on canvas
 def draw(canvas):
@@ -52,7 +62,18 @@ def draw(canvas):
     
     for x in range(len(dots)):
         canvas.draw_circle(dots[x], radius1, radius1, colour, colour)
-  
+    
+    if triste:
+        canvas.draw_polygon([(262, 370),(394,370)], 41, 'white')
+        canvas.draw_text('triste.',(265,387) , 53, 'Blue')
+       
+        
+        
+#Easy mode
+def make_triste():
+    global triste
+    triste = not triste
+     
         
     
 # Create a frame 
@@ -60,17 +81,22 @@ frame = simplegui.create_frame('David es muy comico', 400, 400)
 
 
 # Add buttons and inputs to frame
-
 label = frame.add_label('Please turn the frown upside down so that it matches the statement.')
 label1 = frame.add_label('----------------------------')
-button1 = frame.add_button('SCRUB DADDY', clear_click)
+
 inp1 = frame.add_input('Enter your thickness', thickness_handle, 100)
 inp2 = frame.add_input('Enter your colour', colour_handle, 100)
 
+label1 = frame.add_label('----------------------------')
+
+button1 = frame.add_button('SCRUB DADDY', clear_click)
+button2 = frame.add_button('Make picture true(Easy Mode)',make_triste)
+
+
+
+
 # Assign callbacks to event handlers
-
 frame.set_draw_handler(draw)
-
 frame.set_mousedrag_handler(click)
 
 # Start the frame animation
