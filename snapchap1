@@ -13,11 +13,10 @@ HEIGHT = 2368
 
 ballpos = [WIDTH / 2, HEIGHT / 2]
 
+
+
 # Create empty lists to hold dots 
 dots = []
-
-colour = "blue"
-radius1 = 3
 
 # Handler for clear button
 def clear_click():
@@ -27,13 +26,17 @@ def clear_click():
     
 # Handler for thickness input
 
-def thickness_handle(text_input):
-    pass
+def thickness_handle(thethick):
+    global radius1
+    radius1 = int(thethick)
+    print radius1
+    return radius1
 
 # Handler for colour input
 def colour_handle(text_input):
-    pass
-   
+    global colour
+    colour = text_input
+    return colour
     
 # Handler for mouse click
 def click(position):
